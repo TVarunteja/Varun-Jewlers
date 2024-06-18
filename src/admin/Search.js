@@ -28,7 +28,7 @@ export default function ViewCustomers() {
 
   const fetchViewCustomers = useCallback(async () => {
     try {
-      const response = await axios.get('http://localhost:2033/viewcustomers');
+      const response = await axios.get(`${config.url/viewcustomers`);
       const customersWithFormattedDate = response.data.map(customer => ({
         ...customer,
         date: new Date(customer.date).toLocaleDateString('en-GB')
