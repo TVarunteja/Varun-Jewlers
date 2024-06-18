@@ -56,11 +56,12 @@ export default function ViewCustomers() {
   const deleteCustomer = async (billnumber) => {
     try {
       const thereat = await getmdbybillno(billnumber);
-      if (thereat === 'MD1') {
-        await axios.delete(`${config.url}/deletemd1/${billnumber}`);
-      } else if (thereat === 'MD2') {
-        await axios.delete(`${config.url}/deletemd2/${billnumber}`);
-      }
+if (thereat === 'MD1') {
+  await axios.delete(`${config.url}/deletemd1/${billnumber}`);
+} else if (thereat === 'MD2') {
+  await axios.delete(`${config.url}/deletemd2/${billnumber}`);
+}
+
       await axios.delete(`${config.url}/deletecustomer/${billnumber}`);
       fetchViewCustomers();
       navigate('/takenaway');
