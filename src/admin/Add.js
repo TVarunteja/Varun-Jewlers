@@ -25,7 +25,7 @@ const Add = () => {
         const dateTimestamp = new Date(formData.date).getTime();
 
         try {
-            const response = await axios.post('http://localhost:2033/insertcustomers', { ...formData, date: dateTimestamp });
+            const response = await axios.post(`${config.url}/insertcustomers`, { ...formData, date: dateTimestamp });
 
             if (response.status === 200) {
                 setFormData({
