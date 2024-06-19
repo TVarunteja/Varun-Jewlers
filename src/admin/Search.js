@@ -56,24 +56,25 @@ export default function ViewCustomers() {
   const deleteCustomer = async (billnumber) => {
     try {
       // Fetch the customer details
-      const customerResponse = await axios.get(`${config.url}/customer/${billnumber}`);
-      const customer = customerResponse.data;
+      // const customerResponse = await axios.get(`${config.url}/customer/${billnumber}`);
+      // const customer = customerResponse.data;
 
-      // Store the deleted record in the "taken away" database
-      await axios.post(`${config.url}/insertcustomer`, customer);
+      // // Store the deleted record in the "taken away" database
+      // await axios.post(`${config.url}/insertcustomer`, customer);
 
       // Delete the customer from the appropriate collection
-      const thereat = await getmdbybillno(billnumber);
-      if (thereat === 'MD1') {
-        await axios.delete(`${config.url}/deletemd1/${billnumber}`);
-      } else if (thereat === 'MD2') {
-        await axios.delete(`${config.url}/deletemd2/${billnumber}`);
-      }
+      // const thereat = await getmdbybillno(billnumber);
+      // if (thereat === 'MD1') {
+      //   await axios.delete(`${config.url}/deletemd1/${billnumber}`);
+      // } else if (thereat === 'MD2') {
+      //   await axios.delete(`${config.url}/deletemd2/${billnumber}`);
+      // }
 
       await axios.delete(`${config.url}/deletecustomer/${billnumber}`);
+      window.location.reload()
 
       // Fetch updated customers list and navigate to takenaway page
-      fetchViewCustomers();
+      // fetchViewCustomers();
       // navigate('/takenaway');
     } catch (error) {
       console.error(error.message);
