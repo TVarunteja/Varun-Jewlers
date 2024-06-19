@@ -6,8 +6,17 @@ const TakenAway = () => {
   const [searchTerm, setSearchTerm] = useState('');
 
   useEffect(() => {
-    const storedDeletedCustomers = JSON.parse(localStorage.getItem('deletedCustomers')) || [];
-    setDeletedCustomers(storedDeletedCustomers);
+    const fetchDeletedCustomers = async () => {
+      try {
+        const response = await fetch('http://localhost:2033/insertcustomer'); // Replace with your actual API endpoint
+        const data = await response.json();
+        setDeletedCustomers(data);
+      } catch (error) {
+        console.error('Error fetching deleted customers:', error);
+      }
+    };
+
+    fetchDeletedCustomers();
   }, []);
 
   const handleSearch = (event) => {

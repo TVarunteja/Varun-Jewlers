@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import config from '../Config';
 
 const Add = () => {
     const [formData, setFormData] = useState({
@@ -25,7 +26,7 @@ const Add = () => {
         const dateTimestamp = new Date(formData.date).getTime();
 
         try {
-            const response = await axios.post('http://localhost:2033/insertcustomers', { ...formData, date: dateTimestamp });
+            const response = await axios.post(`${config.url}/insertcustomers`, { ...formData, date: dateTimestamp });
 
             if (response.status === 200) {
                 setFormData({
@@ -89,7 +90,7 @@ const Add = () => {
                         <label htmlFor='amount'>Amount</label>
                         <input type="number" id='amount' name='amount' value={formData.amount} onChange={handleChange} />
                     </div>
-                    <button className="button" type='submit'>Add</button>
+                    <button className="button" type='submit' onClick={handleSubmit}>Add</button>
                 </form>
             </div>
         </div>

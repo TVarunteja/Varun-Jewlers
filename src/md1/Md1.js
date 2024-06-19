@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import axios from 'axios';
+import config from '../Config';
 
 const MD1 = () => {
   const location = useLocation();
@@ -33,7 +34,7 @@ const MD1 = () => {
     e.preventDefault();
     const dateTimestamp = new Date(formData.date).getTime();
     try {
-      const response = await axios.post('http://localhost:2033/insertMd1', { ...formData, date: dateTimestamp });
+      const response = await axios.post(`${config.url}/insertMd1`, { ...formData, date: dateTimestamp });
       if (response.status === 200) {
         setFormData({
           date: '',
