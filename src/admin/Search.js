@@ -28,7 +28,7 @@ export default function ViewCustomers() {
 
   const fetchViewCustomers = useCallback(async () => {
     try {
-      const response = await axios.get(`${config.url}/viewcustomers`);
+      const response = await axios.get(`${config.url/viewcustomers`);
       const customersWithFormattedDate = response.data.map(customer => ({
         ...customer,
         date: new Date(customer.date).toLocaleDateString('en-GB')
@@ -64,11 +64,12 @@ export default function ViewCustomers() {
 
       // Delete the customer from the appropriate collection
       const thereat = await getmdbybillno(billnumber);
-      if (thereat === 'MD1') {
-        await axios.delete(`${config.url}/deletemd1/${billnumber}`);
-      } else if (thereat === 'MD2') {
-        await axios.delete(`${config.url}/deletemd2/${billnumber}`);
-      }
+if (thereat === 'MD1') {
+  await axios.delete(`${config.url}/deletemd1/${billnumber}`);
+} else if (thereat === 'MD2') {
+  await axios.delete(`${config.url}/deletemd2/${billnumber}`);
+}
+
       await axios.delete(`${config.url}/deletecustomer/${billnumber}`);
 
       // Fetch updated customers list and navigate to takenaway page
