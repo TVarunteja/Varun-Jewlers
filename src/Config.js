@@ -1,5 +1,5 @@
 const config=
 {
-    url:'https://backendapp-lvxx.onrender.com'
+    url:'https://backend-5-f3gd.onrender.com'
 };
 export default config

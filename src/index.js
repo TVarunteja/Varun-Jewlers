@@ -12,6 +12,7 @@ import TotalAmount from './admin/TotalAmount';
 import Md1customers from './md1/Md1customers';
 import Md2customers from './md2/Md2customers';
 import TakenAway from './admin/TakenAway';
+import Addtodelete from './admin/Addtodelete';
 
 const router= createBrowserRouter(
   createRoutesFromElements(
@@ -26,6 +27,7 @@ const router= createBrowserRouter(
         <Route path="/md1customers" element={<Md1customers/>} exact />
         <Route path="/md2customers" element={<Md2customers/>} exact />
         <Route path="/takenaway" element={<TakenAway/>} exact />
+        <Route path="/addtodelete" element={<Addtodelete/>} exact />
       
     </Route>
   )

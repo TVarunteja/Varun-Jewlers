@@ -55,27 +55,17 @@ export default function ViewCustomers() {
 
   const deleteCustomer = async (billnumber) => {
     try {
-      // Fetch the customer details
-      // const customerResponse = await axios.get(`${config.url}/customer/${billnumber}`);
-      // const customer = customerResponse.data;
-
-      // // Store the deleted record in the "taken away" database
-      // await axios.post(`${config.url}/insertcustomer`, customer);
-
-      // Delete the customer from the appropriate collection
-      // const thereat = await getmdbybillno(billnumber);
-      // if (thereat === 'MD1') {
-      //   await axios.delete(`${config.url}/deletemd1/${billnumber}`);
-      // } else if (thereat === 'MD2') {
-      //   await axios.delete(`${config.url}/deletemd2/${billnumber}`);
-      // }
+      const thereat = await getmdbybillno(billnumber);
+      if (thereat === 'MD1') {
+        await axios.delete(`${config.url}/md1deletecustomer/${billnumber}`);
+      } else if (thereat === 'MD2') {
+        await axios.delete(`${config.url}/md2deletecustomer/${billnumber}`);
+      }
 
       await axios.delete(`${config.url}/deletecustomer/${billnumber}`);
-      window.location.reload()
+      window.location.reload();
 
-      // Fetch updated customers list and navigate to takenaway page
-      // fetchViewCustomers();
-      // navigate('/takenaway');
+      fetchViewCustomers();
     } catch (error) {
       console.error(error.message);
     }
@@ -92,6 +82,9 @@ export default function ViewCustomers() {
   const handleTakeAwayClick = (customer) => {
     navigate('/totalamount', { state: { date: customer.date, billnumber: customer.billnumber, name: customer.name, amount: customer.amount } });
   };
+  const handletakenawayClick = (customer) => {
+    navigate('/addtodelete', { state: { date: customer.date,fathername:customer.fathername,address:customer.address ,billnumber: customer.billnumber, name: customer.name, amount: customer.amount,itemtype:customer.itemtype,phonenumber:customer.phonenumber,thereat:customer.thereat } });
+  };
 
   const handleSearch = (event) => {
     setSearchTerm(event.target.value);
@@ -102,9 +95,11 @@ export default function ViewCustomers() {
     setFilteredCustomers(filtered);
   };
 
+  
+
   return (
     <div style={{ textAlign: 'center' }}>
-      <h1>Customers</h1>
+      <h1 style={{ color: '#003366' }} >Customers</h1>
       <div style={{ marginBottom: '20px' }}>
         <input 
           type="text" 
@@ -153,6 +148,9 @@ export default function ViewCustomers() {
                 </td>
                 <td>
                   <button onClick={() => deleteCustomer(customer.billnumber)} className='button'>Delete</button>
+                </td>
+                <td>
+                  <button onClick={() => handletakenawayClick(customer)} className='button'>Add to Delete</button>
                 </td>
               </tr>
             ))

@@ -1,48 +1,69 @@
-/* TakenAway.css */
-.container {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-    padding: 20px;
-    text-align: center;
-  }
-  
-  h1 {
-    font-size: 2em;
-    margin-bottom: 20px;
-    color: #333;
-  }
-  
-  .customers-table {
-    width: 80%;
-    border-collapse: collapse;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-  }
-  
-  .customers-table th, .customers-table td {
-    border: 1px solid #ddd;
-    padding: 12px 15px;
-    text-align: left;
-  }
-  
-  .customers-table th {
-    background-color: #f4f4f4;
-    color: #333;
-    font-weight: bold;
-  }
-  
-  .customers-table tr:nth-child(even) {
-    background-color: #f9f9f9;
-  }
-  
-  .customers-table tr:hover {
-    background-color: #f1f1f1;
-  }
-  
-  p {
-    font-size: 1.2em;
-    color: #666;
-  }
-  
+body {
+  color: #030000;
+  text-align: center;
+}
+
+h1 {
+  font-size: 2em;
+  margin-bottom: 20px;
+  color: #003366; /* Changed to a specific shade of blue */
+}
+
+.customers-table {
+  width: 80%;
+  margin: 0 auto; /* Center the table */
+  border-collapse: collapse;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  background-color: rgba(255, 255, 255, 0.9); /* Slightly transparent background */
+}
+
+.customers-table th, .customers-table td {
+  border: 1px solid rgba(255, 252, 252, 0.1); /* Light border for better readability */
+  padding: 12px 15px;
+  text-align: left;
+  color: #333; /* Dark text for better readability */
+}
+
+.customers-table th {
+  background-color: rgba(0, 51, 102, 0.8); /* Darker semi-transparent background for headers */
+  color: #fbf9f9; /* Changed to black text for headers */
+  font-weight: bold;
+}
+
+.customers-table tr:nth-child(even) {
+  background-color: rgba(0, 0, 0, 0.05); /* Light semi-transparent background for even rows */
+}
+
+.customers-table tr:hover {
+  background-color: rgba(0, 0, 0, 0.1); /* Slightly darker background on hover */
+}
+
+p {
+  font-size: 1.2em;
+  color: #000000; /* Black text for better contrast */
+}
+
+input {
+  padding: 5px;
+  margin-right: 10px;
+  border: 1px solid #0c0000;
+  border-radius: 4px;
+}
+
+button.button {
+  background-color: #003366;
+  color: rgb(255, 255, 255);
+  border: none;
+  padding: 10px 15px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 14px;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+button.button:hover {
+  background-color: #ffcc00;
+}

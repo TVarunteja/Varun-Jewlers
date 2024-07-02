@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import './TakenAway.css';
+import axios from 'axios';
+import './TakenAway.css'; // Import your CSS file
+import config from '../Config';
 
 const TakenAway = () => {
   const [deletedCustomers, setDeletedCustomers] = useState([]);
@@ -8,9 +10,13 @@ const TakenAway = () => {
   useEffect(() => {
     const fetchDeletedCustomers = async () => {
       try {
-        const response = await fetch('http://localhost:2033/insertcustomer'); // Replace with your actual API endpoint
-        const data = await response.json();
-        setDeletedCustomers(data);
+        const response = await axios.get(`${config.url}/viewcustomer`);
+        const customersWithFormattedDate = response.data.map(customer => ({
+          ...customer,
+          date: new Date(customer.date).toLocaleDateString('en-GB')
+        }));
+        setDeletedCustomers(customersWithFormattedDate); // Set formatted data
+        
       } catch (error) {
         console.error('Error fetching deleted customers:', error);
       }
@@ -28,7 +34,7 @@ const TakenAway = () => {
   );
 
   return (
-    <div className="container">
+    <div>
       <h1>Deleted Customers</h1>
       <div style={{ marginBottom: '20px' }}>
         <input
@@ -40,10 +46,10 @@ const TakenAway = () => {
         />
       </div>
       {filteredCustomers && filteredCustomers.length > 0 ? (
-        <table className="customers-table">
+        <table className="customers-table"> {/* Ensure this class matches your CSS */}
           <thead>
             <tr>
-              <th>Date</th>
+              <th>Taken Away Date</th>
               <th>Bill Number</th>
               <th>Name</th>
               <th>Father Name</th>
@@ -52,7 +58,6 @@ const TakenAway = () => {
               <th>Item Type</th>
               <th>Amount</th>
               <th>There At</th>
-              <th>Taken Away Date</th>
             </tr>
           </thead>
           <tbody>
@@ -67,7 +72,6 @@ const TakenAway = () => {
                 <td>{customer.itemtype}</td>
                 <td>{customer.amount}</td>
                 <td>{customer.thereat}</td>
-                <td>{customer.takenawaydate}</td>
               </tr>
             ))}
           </tbody>

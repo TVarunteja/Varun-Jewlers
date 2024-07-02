@@ -54,7 +54,7 @@ const MD1 = () => {
   return (
     <div>
       <div className="container">
-        <h1>ADD BILL TO MD1</h1>
+        <h1 style={{ color: '#003366' }} >ADD BILL TO MD1</h1>
         <form className='w-full py-3' onSubmit={handleSubmit}>
           <div className="form-group">
             <label htmlFor='date'>Date</label>

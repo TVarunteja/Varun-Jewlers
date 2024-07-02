@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import config from '../Config';
+
+
 export default function ViewCustomers() {
   const [customers, setCustomers] = useState([]);
   const [searchTerm, setSearchTerm] = useState('');
@@ -44,7 +46,7 @@ export default function ViewCustomers() {
 
   return (
     <div style={{ textAlign: 'center' }}>
-      <h1>MD1 Customers</h1>
+      <h1 style={{ color: '#003366' }} >MD1 Customers</h1>
       <div style={{ marginBottom: '20px' }}>
         <input 
           type="text" 
@@ -55,7 +57,7 @@ export default function ViewCustomers() {
         />
       </div>
       {filteredCustomers && filteredCustomers.length > 0 ? (
-        <table border={1} align="center" style={{ width: 'auto', height: 'auto' }}>
+        <table className="customers-table">
           <thead>
             <tr>
               <th>Date</th>

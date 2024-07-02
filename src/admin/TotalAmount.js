@@ -61,7 +61,7 @@ const styles = {
     justifyContent: 'center',
     alignItems: 'center',
     height: '100vh',
-    backgroundColor: '#f5f5f5',
+    
   },
   card: {
     backgroundColor: '#fff',

@@ -1,8 +1,10 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect} from 'react';
 import axios from 'axios';
+import { useLocation } from 'react-router-dom';
 import config from '../Config';
 
 const Add = () => {
+  const location = useLocation();
     const [formData, setFormData] = useState({
         date: '',
         billnumber: '',
@@ -12,9 +14,28 @@ const Add = () => {
         phonenumber: '',
         itemtype: '',
         amount: '',
+        thereat:'',
     });
     const [message, setMessage] = useState('');
     const [error, setError] = useState('');
+
+    useEffect(() => {
+      if (location.state) {
+        setFormData((prevFormData) => ({
+          ...prevFormData,
+          date: location.state.date,
+          billnumber: location.state.billnumber,
+          name: location.state.name,
+          fathername: location.state.fathername,
+          address: location.state.address,
+          phonenumber: location.state.phonenumber,
+          itemtype: location.state.itemtype,
+          amount: location.state.amount,
+          thereat: location.state.thereat,
+        }));
+      }
+    }, [location.state]);
+  
 
     const handleChange = (e) => {
         const value = e.target.type === 'checkbox' ? e.target.checked : e.target.value;
@@ -26,7 +47,7 @@ const Add = () => {
         const dateTimestamp = new Date(formData.date).getTime();
 
         try {
-            const response = await axios.post(`${config.url}/insertcustomers`, { ...formData, date: dateTimestamp });
+          const response = await axios.post(`${config.url}/takenawaycustomer`, { ...formData, date: dateTimestamp });
 
             if (response.status === 200) {
                 setFormData({
@@ -38,6 +59,7 @@ const Add = () => {
                     phonenumber: '',
                     itemtype: '',
                     amount: '',
+                    thereat:'',
                 });
             }
             setMessage(response.data);
@@ -89,6 +111,10 @@ const Add = () => {
                     <div className="form-group">
                         <label htmlFor='amount'>Amount</label>
                         <input type="number" id='amount' name='amount' value={formData.amount} onChange={handleChange} />
+                    </div>
+                    <div className="form-group">
+                        <label htmlFor='thereat'>Thereat</label>
+                        <input type="text" id='thereat' name='thereat' value={formData.thereat} onChange={handleChange} />
                     </div>
                     <button className="button" type='submit' onClick={handleSubmit}>Add</button>
                 </form>

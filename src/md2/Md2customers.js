@@ -47,7 +47,7 @@ export default function ViewCustomers() {
 
   return (
     <div style={{ textAlign: 'center' }}>
-      <h1>MD2 Customers</h1>
+      <h1 style={{ color: '#003366' }} >MD2 Customers</h1>
       <div style={{ marginBottom: '20px' }}>
         <input 
           type="text" 
@@ -57,7 +57,7 @@ export default function ViewCustomers() {
           style={{ padding: '5px', marginRight: '10px' }} // Adjust input padding and margin
         />
       </div>
-      <table border={1} align="center" style={{ width: 'auto', height: 'auto' }} >
+      <table className="customers-table" >
         <thead>
           <tr>
             <th>Date</th>
