@@ -40,7 +40,7 @@ header {
 }
 
 .nav-container a:hover {
-  color: #ffcc00; /* Yellow color for hover state */
+  color: #516fa1; /* Yellow color for hover state */
 }
 
 /* Dropdown Menu */
@@ -70,19 +70,11 @@ header {
 
 .dropdown li a:hover {
   background-color: #004080; /* Slightly lighter background on hover */
-  color: #ffcc00; /* Change text color on hover to yellow */
+  color: #516fa1; /* Change text color on hover to yellow */
 }
 
 /* Navigation Underline */
-.nav-underline {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  height: 2px;
-  width: 25%;
-  background-color: #ffcc00; /* Yellow color */
-  transition: transform 0.3s ease;
-}
+
 
 .nav-container a:nth-child(1):hover ~ .nav-underline {
   transform: translateX(0%);

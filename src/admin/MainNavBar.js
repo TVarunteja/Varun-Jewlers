@@ -7,6 +7,7 @@ const Header = () => {
 
   return (
     <header>
+      
       <nav className="nav-container">
         <ul>
           <li>
@@ -54,6 +55,7 @@ const Header = () => {
         </ul>
         <span className="nav-underline"></span>
       </nav>
+      
     </header>
   );
 };

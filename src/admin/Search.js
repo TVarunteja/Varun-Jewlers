@@ -109,7 +109,7 @@ export default function ViewCustomers() {
           style={{ padding: '5px', marginRight: '10px' }}
         />
       </div>
-      <table border={1} align="center" style={{ width: 'auto', height: 'auto' }}>
+      <table className="customers-table">
         <thead>
           <tr>
             <th>Date</th>
@@ -121,7 +121,11 @@ export default function ViewCustomers() {
             <th>Item Type</th>
             <th>Amount</th>
             <th>There At</th>
-            <th>Actions</th>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th></th>
           </tr>
         </thead>
         <tbody>

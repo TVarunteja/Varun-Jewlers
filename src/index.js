@@ -17,7 +17,7 @@ import Addtodelete from './admin/Addtodelete';
 const router= createBrowserRouter(
   createRoutesFromElements(
     <Route path='/' element={<App/>}>
-      
+    
      
         <Route path="/add" element={<Add/>} exact />
         <Route path="/search" element={<Search/>} exact />
